@@ -12,11 +12,28 @@ public class ballController : MonoBehaviour
 
         //set velocity
         rb.velocity = new Vector2(Random.Range(-200f, 200f), Random.Range(-200f,200));
+
+        AudioSource audioSource;//reference to audio source
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)) //create popping noise whenever person presses space bar
+        {
+            AudioSource audioSource;//reference to audio source
+            audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Debug.Log("Ouch! That hurt man!");
+        AudioSource audioSource;//reference to audio source
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+
     }
 }
